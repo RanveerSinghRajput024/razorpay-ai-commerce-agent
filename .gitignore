@@ -1,0 +1,13 @@
+.env
+.env.*
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.vscode/
+
+# ChromaDB
+data/chroma_db/
+
+# Large/raw datasets
+data/Online Retail.xlsx
