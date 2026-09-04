@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 
-
 load_dotenv()
 
 
@@ -14,14 +13,31 @@ class Neo4jClient:
         self.username = os.getenv("NEO4J_USERNAME")
         self.password = os.getenv("NEO4J_PASSWORD")
 
+        # Streamlit Cloud secrets
+        try:
+            import streamlit as st
+
+            self.uri = st.secrets.get("NEO4J_URI", self.uri)
+            self.username = st.secrets.get(
+                "NEO4J_USERNAME",
+                self.username
+            )
+            self.password = st.secrets.get(
+                "NEO4J_PASSWORD",
+                self.password
+            )
+
+        except Exception:
+            pass
+
         if not self.uri:
-            raise ValueError("NEO4J_URI is missing from .env")
+            raise ValueError("NEO4J_URI is missing")
 
         if not self.username:
-            raise ValueError("NEO4J_USERNAME is missing from .env")
+            raise ValueError("NEO4J_USERNAME is missing")
 
         if not self.password:
-            raise ValueError("NEO4J_PASSWORD is missing from .env")
+            raise ValueError("NEO4J_PASSWORD is missing")
 
         self.driver = GraphDatabase.driver(
             self.uri,
