@@ -1,5 +1,7 @@
 # 🛒 AI Commerce Recommendation Agent
 
+> 🔴 **[Live Demo](https://razorpay-ai-commerce-agent-fixlfarerpdgwx99tnlkvp.streamlit.app/)**
+
 An AI-powered e-commerce recommendation system that combines
 **purchase history**, **semantic product similarity**, **Neo4j**,
 **ChromaDB**, **LangGraph**, and **Groq LLMs** to provide intelligent
